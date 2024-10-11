@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body{
+    @apply bg-background
+  }
+  h1,h2,h3,h4,h5,h6{
+    @apply font-bold
+  }
+  h1{
+    @apply text-3xl md:text-5xl
+  }
+  h2{
+    @apply text-2xl md:text-3xl
+  }
+  h3{
+    @apply text-xl md:text-2xl
+  }
+  p{
+    @apply text-primary
+  }
+  section{
+    @apply py-10
+  }
+}
+
+@layer components {
+  .navlink {
+    @apply relative flex items-center text-primary font-medium px-3 h-full transition-colors duration-300 cursor-pointer;
+  
+
+    &::after {
+      content: "";
+      @apply absolute left-1/2 w-1 bottom-0 h-1 rounded-full bg-accent transform -translate-x-1/2 transition-all duration-300;
+    }
+
+    &:hover::after {
+      @apply h-[2px] w-full;
+    }
+  }
+
+  /* Specific styles for links without the underline */
+  .no-underline {
+    &::after {
+      content: none; 
+    }
+  }
+  .nav-auth{
+    @apply border py-1 px-4 rounded border-accent bg-accent hover:bg-transparent hover:text-primary text-white transition-all duration-300;
+  }
+
+}
