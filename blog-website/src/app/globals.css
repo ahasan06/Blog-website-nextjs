@@ -10,7 +10,7 @@
     @apply font-bold
   }
   h1{
-    @apply text-3xl md:text-5xl
+    @apply text-5xl 
   }
   h2{
     @apply text-2xl md:text-3xl
@@ -49,6 +49,9 @@
   }
   .nav-auth{
     @apply border py-1 px-4 rounded border-accent bg-accent hover:bg-transparent hover:text-primary text-white transition-all duration-300;
+  }
+  .special-word{
+    @apply text-accent
   }
 
 }

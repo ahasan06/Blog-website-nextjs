@@ -16,6 +16,7 @@ function Navbar() {
     const handleShowDropDown = () => {
         setShowDropDown(prevState => !prevState)
     }
+
     const handleMobileMenuToggle = () => {
         setIsMobileMenuOpen(prevState => !prevState)
     }
@@ -23,8 +24,8 @@ function Navbar() {
     return (
         <div className="relative bg-background shadow container h-16 flex  justify-between  border-x-4  border-x-accent">
 
-            <Link href="/">
-                <h2 className="h-full flex items-center gap-2"><FaFeatherAlt size={30} color="#f56565" /> Bro's<span className="text-accent font-mono">word</span></h2>
+            <Link href="/Home">
+                <h2 className="h-full flex items-center gap-2"><FaFeatherAlt size={30} color="#f56565" />Bro's<span className="text-accent font-mono">word</span></h2>
             </Link>
 
             {/* Hamburger Icon for Mobile */}
@@ -84,7 +85,7 @@ function Navbar() {
                                 <FaSignInAlt />
                                 <Link href="/">Login</Link>
                             </li>
-                            <li className="navlink no-underline font-mono">
+                            <li className="navlink no-underline  font-mono">
                                 <Link href="/" className="nav-auth">signup</Link>
                             </li>
                         </>
@@ -137,7 +138,7 @@ function Navbar() {
                                 <FaSignInAlt />
                                 <Link href="/">Login</Link>
                             </li>
-                            <li className="navlink no-underline font-mono flex items-center space-x-2">
+                            <li className="navlink no-underline font-mono flex items-center space-x-2 hover:text-accent">
                                 <FaUserPlus />
                                 <Link href="/">Signup</Link>
                             </li>
