@@ -10,7 +10,7 @@ function Input({type,value,onChange,name,label,placeholder}) {
       value={value}
       onChange={onChange}
       placeholder={placeholder}
-      className="w-full p-3 rounded bg-white border-l-2 border-accent focus:outline-none "
+      className="w-full p-3 pr-7 rounded bg-white border-l-2 border-accent focus:outline-none "
       />
     </div>
   )
