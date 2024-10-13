@@ -64,14 +64,14 @@ function Navbar() {
                             {showDropDown && (
                                 <div className="absolute top-full right-0 mt-2 w-48 bg-white border-x border-x-accent shadow-lg rounded-lg z-50">
                                     <ul className="text-primary">
-                                        <li className="flex items-center space-x-2 px-4 py-2 hover:bg-gray-100 rounded-lg">
+                                        <Link href="/profile" className="flex items-center space-x-2 px-4 py-2 hover:bg-gray-100 rounded-lg">
                                             <FaUser className="text-accent" />
-                                            <Link href="/profile">Profile</Link>
-                                        </li>
-                                        <li className="flex items-center space-x-2 px-4 py-2 hover:bg-gray-100 rounded-lg">
+                                            <li>Profile</li>
+                                        </Link>
+                                        <button  onClick={() => signOut()} className="flex items-center w-full space-x-2 px-4 py-2 hover:bg-gray-100 rounded-lg">
                                             <FaSignOutAlt className="text-accent" />
-                                            <button onClick={() => signOut()}>Logout</button>
-                                        </li>
+                                            <li>Logout</li>
+                                        </button>
                                     </ul>
                                 </div>
                             )}
@@ -101,7 +101,7 @@ function Navbar() {
                                     sizes="100vw"
                                     className="w-10 h-10 rounded-full border-2 border-accent shadow-lg cursor-pointer"
                                 />
-                                <span>{user.name}</span>
+                             <span className='text-sm text-accent'>@{user?.name}</span>
                             </li>
                             {showDropDown && (
                                 <div className="w-full mt-2">
