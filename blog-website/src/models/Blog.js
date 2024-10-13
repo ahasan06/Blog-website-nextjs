@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const UserSchema = new mongoose.Schema(
+const BlogSchema = new mongoose.Schema(
     {
         title: {
             type: String,
@@ -76,5 +76,5 @@ const UserSchema = new mongoose.Schema(
     }
 );
 
-const BlogSchema = mongoose.models.Blog  || mongoose.model("Blog", UserSchema);
-export default BlogSchema;
+const BlogModel = mongoose.models.Blog  || mongoose.model("Blog", BlogSchema);
+export default BlogModel;
