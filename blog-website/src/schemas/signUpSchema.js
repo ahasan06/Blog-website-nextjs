@@ -23,4 +23,3 @@ export const signUpSchema  = z.object({
             password: passwordValidation,
 })
         
-        

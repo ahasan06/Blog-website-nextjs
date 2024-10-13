@@ -4,6 +4,10 @@ import Input from '@/components/Input';
 import RedCircles from '@/components/ui/RedCircles';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import Link from 'next/link';
+import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
+import { signInSchema } from '@/schemas/signInSchema';
+import { signIn } from 'next-auth/react';
 
 function Signup() {
   const initialFormData = {
@@ -12,8 +16,10 @@ function Signup() {
   };
 
   const [formData, setFormData] = useState(initialFormData);
-
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter()
+
   const handleShowPassWord = () => {
     setShowPassword(toggleState => !toggleState)
   }
@@ -25,9 +31,44 @@ function Signup() {
       [e.target.name]: e.target.value,
     });
   };
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true)
     console.log('Form Data:', formData);
+
+    try {
+      signInSchema.parse(formData)
+      const signinResult = await signIn('credentials', {
+        redirect: false,
+        identifier: formData.email,
+        password: formData.password,
+      })
+
+      if (signinResult?.error) {
+        toast.error("Incorrect email or password!");
+      }
+      else if (signinResult?.url) {
+        toast.success("Signin successful,redirecting...");
+        router.push('/Home');
+      }
+
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        error.errors.forEach((err) => toast.error(err.message));
+      }
+      else{
+        const errorMessage = error.response?.data?.message || 'Signup failed. Please try again.';
+        console.log("errorMessage", errorMessage);
+        toast.error(errorMessage);
+      }
+  
+    }
+    finally{
+      setIsLoading(false)
+    }
+
+
   };
 
   return (
@@ -73,14 +114,14 @@ function Signup() {
           <button
             type="submit"
             className="w-full bg-accent text-white font-semibold py-3 rounded-lg hover:bg-red-500 transition-colors">
-            Login
+           {isLoading ? 'Loading...' : 'Login'}
           </button>
         </form>
 
         <div className="flex space-x-2 pt-4">
           <p className="text-red-950">Don't have an account? </p>
           <Link href="/signup" className="text-accent font-bold underline">
-            Sign up 
+            Sign up
           </Link>
         </div>
 

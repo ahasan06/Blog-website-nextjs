@@ -22,6 +22,8 @@ function Signup() {
   const [formData, setFormData] = useState(initialFormData);
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
 
   const handleShowPassword = () => {
     setShowPassword((toggleState) => !toggleState);
@@ -42,6 +44,7 @@ function Signup() {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true)
     try {
       const validatedFormData = signUpSchema.parse(formData);
       console.log('Validated Data:', validatedFormData);
@@ -61,6 +64,9 @@ function Signup() {
         console.log('errorMessage', errorMessage);
         toast.error(errorMessage);
       }
+    }
+    finally{
+      setIsLoading(false)
     }
   };
 
@@ -125,7 +131,7 @@ function Signup() {
             type="submit"
             className="w-full bg-accent text-white font-semibold py-3  rounded-lg hover:bg-red-500 transition-colors"
           >
-            Sign Up
+            {isLoading?"Loading...":"Sign Up"}
           </button>
         </form>
 
