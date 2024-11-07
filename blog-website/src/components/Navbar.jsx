@@ -47,8 +47,8 @@ function Navbar() {
                         <li className={`navlink ${pathname === '/blog' ? 'text-accent' : ''}`}>
                             <Link href="/blog">Blog</Link>
                         </li>
-                        <li className={`navlink ${pathname === '/create' ? 'text-accent' : ''}`}>
-                            <Link href="/create">Create</Link>
+                        <li className={`navlink ${pathname === '/create-blog' ? 'text-accent' : ''}`}>
+                            <Link href="/create-blog">Create</Link>
                         </li>
                         <li className="navlink no-underline relative">
                             <div className='flex items-center space-x-2'>
@@ -120,8 +120,8 @@ function Navbar() {
                             <li className={`${pathname === '/blog' ? 'text-accent' : ''} px-4 text-lg`}>
                                 <Link href="/blog">Blog</Link>
                             </li>
-                            <li className={`${pathname === '/create' ? 'text-accent' : ''} px-4 text-lg`}>
-                                <Link href="/create">Create</Link>
+                            <li className={`${pathname === '/create-blog' ? 'text-accent' : ''} px-4 text-lg`}>
+                                <Link href="/create-blog">Create</Link>
                             </li>
                         </>
                     ) : (

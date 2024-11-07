@@ -29,14 +29,18 @@ const BlogSchema = new mongoose.Schema(
             required:true,
             enum: ["history", "photography", "science fiction", "technology", "art", "travel","programming","trending"] 
         },
+        quote: {
+            type: String,
+            required: false, 
+        },
         authorId:{
             type:mongoose.Schema.Types.ObjectId,
             ref:"Users"
         },
         likes:{
-            type:mongoose.Schema.Types.ObjectId,
-            ref:"Users",
-            default:[]
+            type: [mongoose.Schema.Types.ObjectId], 
+            ref: "Users",
+            default: [],
         },
         comments:[
             {
